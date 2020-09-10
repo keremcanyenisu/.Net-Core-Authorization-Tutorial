@@ -9,7 +9,7 @@ using Tutorial.Domain.Context;
 namespace Tutorial.Domain.Migrations
 {
     [DbContext(typeof(TutorialDbContext))]
-    [Migration("20200910140407_initial")]
+    [Migration("20200910150940_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

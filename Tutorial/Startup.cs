@@ -36,6 +36,7 @@ namespace Tutorial
             services.AddScoped<ScopedService>();
             services.AddTransient<TransientService>();
             services.AddDbContext<TutorialDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TutorialDatabase")));
+      
 
 
         }

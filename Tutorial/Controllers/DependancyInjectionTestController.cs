@@ -11,7 +11,7 @@ namespace Tutorial.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestController : ControllerBase
+    public class DependancyInjectionTestController : ControllerBase
     {
 
         private readonly CallerService callerService;
@@ -19,7 +19,7 @@ namespace Tutorial.Controllers
         private readonly SingletonService singletonService;
         private readonly TransientService transientService;
 
-        public TestController(CallerService callerService, ScopedService scopedService, SingletonService singletonService, TransientService transientService)
+        public DependancyInjectionTestController(CallerService callerService, ScopedService scopedService, SingletonService singletonService, TransientService transientService)
         {
             this.callerService = callerService;
             this.scopedService = scopedService;
