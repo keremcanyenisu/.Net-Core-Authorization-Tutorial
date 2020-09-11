@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Tutorial.Models.Users;
-using Tutorial.Services.Interfaces;
+using Tutorial.Business.Models.Users;
+using Tutorial.Business.Services.Interfaces;
 
 namespace Tutorial.Controllers
 {
@@ -21,12 +17,27 @@ namespace Tutorial.Controllers
             _userService = userService;
         }
 
-   
+
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody] UserModel model)
         {
 
-            var user = await _userService.Authenticate(model.Username, model.Password);
+            var token = await _userService.Authenticate(model.Username, model.Password);
+
+            if (token == null)
+            {
+                return await Task.FromResult(new UnauthorizedResult());
+            }
+
+
+            return await Task.FromResult(Ok(token));
+
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] UserModel model)
+        {
+            var user = await _userService.Register(model.Username, model.Password);
 
             if (user == null)
             {
@@ -35,8 +46,8 @@ namespace Tutorial.Controllers
 
 
             return await Task.FromResult(Ok(user));
-
         }
 
+     
     }
 }

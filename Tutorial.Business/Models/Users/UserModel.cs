@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Tutorial.Models.Users
+namespace Tutorial.Business.Models.Users
 {
     public class UserModel
     {
