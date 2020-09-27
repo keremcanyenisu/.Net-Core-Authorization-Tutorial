@@ -47,6 +47,13 @@ namespace Tutorial
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+
+            // custom jwt auth middleware
+            app.UseMiddleware<JwtMiddleware>();
 
 
             app.UseRouting();
